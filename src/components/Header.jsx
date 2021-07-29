@@ -12,7 +12,6 @@ class Header extends React.Component {
   }
 
   handleChange({ target: { name, value } } ) {
-    console.log(value)
     this.setState({ [name]: value });
   }
   render() {
