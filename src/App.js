@@ -1,12 +1,14 @@
 import React from 'react';
+import Header from './components/Header';
 import { fetchPokemonList } from './services/fetchApi';
 
 class App extends React.Component {
   render() {
-    const pokeList = fetchPokemonList(0);
-    pokeList.then((poke) => console.log(poke))
+    // const pokeList = fetchPokemonList();
     return (
-      <div />
+      <main>
+        <Header />
+      </main>
     );
   }
 }
