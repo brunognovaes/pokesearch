@@ -1,0 +1,15 @@
+.pokemon-img {
+  width: 15vw;
+  transform: scale(1);
+  transition: transform 0.3s;
+}
+.pokemon-card {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  flex: 1 0 300px;
+  background-color: #7CF0B7;
+}
+.pokemon-card:hover .pokemon-img {
+  transform: scale(1.2);
+}
