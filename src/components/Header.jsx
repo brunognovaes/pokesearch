@@ -8,17 +8,23 @@ class Header extends React.Component {
 
     this.state = {
       input: '',
+      select: 'All',
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange({ target: { name, value } } ) {
     this.setState({ [name]: value });
   }
+
+  handleSelect(value) {
+    this.setState({ select: value });
+  }
   render() {
-    const { input } = this.state;
-    const { handleChange } = this;
+    const { input, select } = this.state;
+    const { handleChange, handleSelect } = this;
     return (
       <header>
         <h1>PokeSearch</h1>
@@ -28,14 +34,15 @@ class Header extends React.Component {
             <Form.Text>gotta catch 'em all</Form.Text>
           </Form.Label>
 
-          <Dropdown>
-            <Dropdown.Toggle>
-              Filters
+          <Dropdown >
+            <Dropdown.Toggle >
+              { select }
             </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item>Type</Dropdown.Item>
-              <Dropdown.Item>Alphabetic</Dropdown.Item>
-              <Dropdown.Item>Number</Dropdown.Item>
+            <Dropdown.Menu >
+              <Dropdown.Item onSelect={ () => handleSelect('All') } >All</Dropdown.Item>
+              <Dropdown.Item onSelect={ () => handleSelect('Type') }>Type</Dropdown.Item>
+              <Dropdown.Item onSelect={ () => handleSelect('Alphabetic') }>Alphabetic</Dropdown.Item>
+              <Dropdown.Item onSelect={ () => handleSelect('Number') }>Number</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>

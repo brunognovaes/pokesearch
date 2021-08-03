@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 class PokemonCard extends React.Component {
   render() {
     const { src, name, } = this.props;
-    console.log(name)
+
     return (
         <Card className="pokemon-card">
           <div className="img-container">

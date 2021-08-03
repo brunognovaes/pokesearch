@@ -17,8 +17,15 @@ class PokemonList extends React.Component {
     };
 
     const officialArtwork = "official-artwork";
-
-    const { sprites: { other: { [officialArtwork]: { front_default } } }, name } = fakePokemon;
+    const {
+      sprites: {
+        other: {
+          [officialArtwork]: {
+            front_default
+          },
+        },
+      }, name
+    } = fakePokemon;
     return (
       <section className="pokemon-list">
         { Array.from({ length: 9 }).map(() => {
