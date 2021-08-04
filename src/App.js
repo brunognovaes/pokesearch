@@ -10,13 +10,11 @@ class App extends React.Component {
 
     this.state = {
       input: '',
-      select: 'All',
       pokemonList: [],
       loading: true,
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.renderSite = this.renderSite.bind(this);
+    this.renderList = this.renderList.bind(this);
     this.handlePage = this.handlePage.bind(this);
     this.fetchApi = this.fetchApi.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -24,10 +22,6 @@ class App extends React.Component {
 
   handleChange({ target: { name, value } }) {
     this.setState({ [name]: value });
-  }
-
-  handleSelect(value) {
-    this.setState({ select: value });
   }
 
   handlePage(page) {
@@ -61,26 +55,37 @@ class App extends React.Component {
     );
   }
 
-  renderSite() {
-    const { handleChange, handleSearch, handleSelect, handlePage, state: { input, select, pokemonList } } = this;
+  renderList() {
+    const { state: { input, select, pokemonList } } = this;
 
     return (
       <main className="App">
-        <Header handleSearch={ handleSearch } handleInput={ handleChange } handleSelect={ handleSelect } inputValue={ input } selectValue={ select } />
         <PokemonList pokemonList={ pokemonList } filters={{ search: input, category: select }}/>
-        <Footer handlePage={ handlePage } />
       </main> 
     );
   }
   render() {
-    const { renderLoading, renderSite } = this;
-    const { loading } = this.state;
+    const {
+      renderLoading,
+      renderList,
+      handleChange,
+      handleSearch,
+      handlePage,
+    } = this;
 
+    const { loading, input } = this.state;
+    
     return (
-      loading 
-      ? renderLoading()
-      : renderSite()
-     );
+      <main className="App">
+        <Header handleSearch={ handleSearch } handleInput={ handleChange } inputValue={ input } />
+        {
+          loading 
+          ? renderLoading()
+          : renderList()
+        }
+        <Footer handlePage={ handlePage } />
+      </main>
+    );
   }
 }
 

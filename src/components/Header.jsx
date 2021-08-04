@@ -1,12 +1,16 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
-import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button'
+import PropTypes from 'prop-types';
 
 class Header extends React.Component {
 
   render() {    
-    const { handleInput, handleSearch, handleSelect, inputValue, selectValue } = this.props;
+    const {
+      handleInput,
+      handleSearch,
+      inputValue,
+    } = this.props;
     return (
       <header>
         <h1>PokeSearch</h1>
@@ -16,22 +20,16 @@ class Header extends React.Component {
             <Button onClick={ handleSearch } variant="dark">Search</Button>
             <Form.Text>gotta catch 'em all</Form.Text>
           </Form.Label>
-
-          <Dropdown >
-            <Dropdown.Toggle >
-              { selectValue }
-            </Dropdown.Toggle>
-            <Dropdown.Menu >
-              <Dropdown.Item onSelect={ () => handleSelect('All') } >All</Dropdown.Item>
-              <Dropdown.Item onSelect={ () => handleSelect('Type') }>Type</Dropdown.Item>
-              <Dropdown.Item onSelect={ () => handleSelect('Alphabetic') }>Alphabetic</Dropdown.Item>
-              <Dropdown.Item onSelect={ () => handleSelect('Number') }>Number</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
         </div>
       </header>
     );
   }
+}
+
+Header.propTypes = {
+  handleInput: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
 }
 
 export default Header;

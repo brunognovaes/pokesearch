@@ -16,10 +16,11 @@ class PokemonCard extends React.Component {
           },
         },
       },
+      types,
     } = pokemon;
-
+    const pokemonType = types[0].type.name;
     return (
-        <Card className="pokemon-card">
+        <Card className={`pokemon-card ${pokemonType}`}>
           <div className="img-container">
           <Card.Img className="pokemon-img" src={ front_default } variant="top" />
           </div>
