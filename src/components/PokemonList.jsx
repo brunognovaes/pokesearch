@@ -1,35 +1,33 @@
 import React from 'react';
 import PokemonCard from './PokemonCard';
+import { fetchPokemonList } from '../services/fetchApi';
 import './pokemonList.css';
 
 class PokemonList extends React.Component {
-  render() {
-    const fakePokemon = {
-      name: 'bulbasaur',
-      sprites: {
-        other: {
-          'official-artwork': {
-            front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
-          },
-        },
-      },
-      order: 1,
+  constructor() {
+    super();
+    this.state = {
+      pokemonList: [],
     };
 
-    const officialArtwork = "official-artwork";
-    const {
-      sprites: {
-        other: {
-          [officialArtwork]: {
-            front_default
-          },
-        },
-      }, name
-    } = fakePokemon;
+    this.setPokemonList = this.setPokemonList.bind(this);
+  }
+
+  async componentDidMount() {
+    const data = await fetchPokemonList();
+    this.setPokemonList(data);
+  }
+
+  setPokemonList(pokemonList) {
+    this.setState({ pokemonList });
+  }
+
+  render() {
+    const { pokemonList } = this.state;
     return (
       <section className="pokemon-list">
-        { Array.from({ length: 9 }).map(() => {
-          return <PokemonCard src={ front_default } name={ name } />
+        { pokemonList.map((pokemon) => {
+          return <PokemonCard key={ pokemon.id } pokemon={ pokemon } />
         })}
       </section>
     );

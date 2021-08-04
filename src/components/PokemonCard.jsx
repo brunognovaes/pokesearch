@@ -5,12 +5,23 @@ import PropTypes from 'prop-types';
 
 class PokemonCard extends React.Component {
   render() {
-    const { src, name, } = this.props;
+    const officialArtwork = 'official-artwork';
+    const { pokemon } = this.props;
+    const {
+      name,
+      sprites: {
+        other: {
+          [officialArtwork]: {
+            front_default,
+          },
+        },
+      },
+    } = pokemon;
 
     return (
         <Card className="pokemon-card">
           <div className="img-container">
-          <Card.Img className="pokemon-img" src={ src } variant="top" />
+          <Card.Img className="pokemon-img" src={ front_default } variant="top" />
           </div>
           <Card.Title>
             { name }
@@ -21,8 +32,29 @@ class PokemonCard extends React.Component {
 };
 
 PokemonCard.propTypes = {
-  src: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-}
+  pokemon: PropTypes.shape({
+    abilities: PropTypes.arrayOf(PropTypes.object),
+    base_experience: PropTypes.number,
+    forms: PropTypes.arrayOf(PropTypes.object),
+    game_indices: PropTypes.arrayOf(PropTypes.object),
+    height: PropTypes.number,
+    held_items: PropTypes.arrayOf(PropTypes.any),
+    id: PropTypes.number,
+    is_default: PropTypes.bool,
+    location_area_encounters: PropTypes.string,
+    moves: PropTypes.arrayOf(PropTypes.object),
+    name: PropTypes.string,
+    order: PropTypes.number,
+    past_types: PropTypes.arrayOf(PropTypes.any),
+    species: PropTypes.shape({
+      name: PropTypes.string,
+      url: PropTypes.string,
+    }),
+    sprites: PropTypes.objectOf(PropTypes.any),
+    stats: PropTypes.arrayOf(PropTypes.object),
+    types: PropTypes.arrayOf(PropTypes.object),
+    weight: PropTypes.number,
+  }),
+};
 
 export default PokemonCard;

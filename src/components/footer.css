@@ -1,0 +1,10 @@
+footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pokeball-icon {
+  width: 40px;
+}

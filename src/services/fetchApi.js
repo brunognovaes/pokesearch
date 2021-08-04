@@ -7,7 +7,7 @@ export const fetchApi = async (URL) => {
 };
 
 export const fetchPokemonList = async () => {
-  const NEXT_POKEMON_LIST = API_URL + 'pokemon?limit=151&offset=$0';
+  const NEXT_POKEMON_LIST = API_URL + 'pokemon?limit=20&offset=$0';
   const response = await fetchApi(NEXT_POKEMON_LIST);
   const list = response.results;
   const pokemonList = await Promise.all(list.map(async (pokemon) => {
