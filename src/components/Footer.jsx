@@ -1,16 +1,21 @@
 import React from 'react';
-import pokeball from '../images/poke_ball.png';
+import { Icon } from '@iconify/react';
+import PropTypes from 'prop-types';
 import './footer.css';
 
 class Footer extends React.Component {
   render() {
-    console.log(pokeball)
+    const { handlePage } = this.props;
     return (
       <footer>
-        { Array.from({ length: 6 }).map((_item, index) => <img className="pokeball-icon" alt="pokeball icon" src={ pokeball } />)}
+        { Array.from({ length: 8 }).map((_item, index) => <Icon onClick={ () => handlePage(index) } className="pokeball-icon" icon="mdi:pokeball" />)}
       </footer>
     );
   }
+}
+
+Footer.propTypes = {
+  handlePage: PropTypes.func.isRequired,
 }
 
 export default Footer;

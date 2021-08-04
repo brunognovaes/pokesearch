@@ -1,17 +1,19 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button'
 
 class Header extends React.Component {
 
   render() {    
-    const { handleInput, handleSelect, inputValue, selectValue } = this.props;
+    const { handleInput, handleSearch, handleSelect, inputValue, selectValue } = this.props;
     return (
       <header>
         <h1>PokeSearch</h1>
         <div className="searchComponent">
           <Form.Label className="searchBar">
             <Form.Control type="text" name="input" value={ inputValue } onChange={ handleInput } />
+            <Button onClick={ handleSearch } variant="dark">Search</Button>
             <Form.Text>gotta catch 'em all</Form.Text>
           </Form.Label>
 
