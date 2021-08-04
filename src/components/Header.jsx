@@ -17,7 +17,7 @@ class Header extends React.Component {
         <div className="searchComponent">
           <Form.Label className="searchBar">
             <Form.Control type="text" name="input" value={ inputValue } onChange={ handleInput } />
-            <Button onClick={ handleSearch } variant="dark">Search</Button>
+            <Button onClick={ handleSearch } variant="light">Search</Button>
             <Form.Text>gotta catch 'em all</Form.Text>
           </Form.Label>
         </div>
