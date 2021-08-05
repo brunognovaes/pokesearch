@@ -1,6 +1,6 @@
-#PokeSearch project
+# PokeSearch project
 
-The PokeSearch is a project to test some knowledge in API and ReactJS
+## The PokeSearch is a project to test some knowledge in API and ReactJS
 
 Made with
 
