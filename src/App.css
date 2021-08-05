@@ -1,7 +1,11 @@
 .App {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
   text-align: center;
   box-sizing: border-box;
   padding: 0px 50px;
   margin: 0;
   background-color: #323338;
+  min-height: 100vh;
 }

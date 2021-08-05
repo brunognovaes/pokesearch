@@ -1,0 +1,21 @@
+.header-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.search-component {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 50%;
+  height: 40px;
+  align-items: center;
+}
+
+h1 {
+  color: #D63E36;
+}

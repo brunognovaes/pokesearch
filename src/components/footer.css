@@ -3,9 +3,20 @@ footer {
   flex-flow: row nowrap;
   justify-content: center;
   gap: 10px;
+  padding-bottom: 10px;
 }
 
 .pokeball-icon {
   font-size: 35px;
   color: red;
+  transform: scale(1);
+}
+
+.pokeball-icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.selected {
+  color: white;
 }

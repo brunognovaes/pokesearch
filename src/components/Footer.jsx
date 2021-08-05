@@ -5,10 +5,14 @@ import './footer.css';
 
 class Footer extends React.Component {
   render() {
-    const { handlePage } = this.props;
+    const { handlePage, currentPage } = this.props;
     return (
       <footer>
-        { Array.from({ length: 8 }).map((_item, index) => <Icon onClick={ () => handlePage(index) } className="pokeball-icon" icon="mdi:pokeball" />)}
+        { Array.from({ length: 8 }).map((_item, index) => {
+          const className = currentPage === index ? 'selected' : '';
+          return <Icon onClick={ () => handlePage(index) } className={ `pokeball-icon ${className}` } icon="mdi:pokeball" />
+         })
+        }
       </footer>
     );
   }
@@ -16,6 +20,7 @@ class Footer extends React.Component {
 
 Footer.propTypes = {
   handlePage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 }
 
 export default Footer;

@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import PropTypes from 'prop-types';
+import './header.css';
 
 class Header extends React.Component {
 
@@ -12,13 +13,13 @@ class Header extends React.Component {
       inputValue,
     } = this.props;
     return (
-      <header>
+      <header className="header-container">
         <h1>PokeSearch</h1>
-        <div className="searchComponent">
-          <Form.Label className="searchBar">
+        <div className="search-component">
+          <Form.Label className="search-bar">
             <Form.Control type="text" name="input" value={ inputValue } onChange={ handleInput } />
             <Button onClick={ handleSearch } variant="light">Search</Button>
-            <Form.Text>gotta catch 'em all</Form.Text>
+            <Form.Text className="pokemon-phrase">gotta catch 'em all</Form.Text>
           </Form.Label>
         </div>
       </header>

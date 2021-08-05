@@ -7,7 +7,7 @@
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  flex: 1 0 300px;
+  flex: 1 0 250px;
 }
 
 .grass {

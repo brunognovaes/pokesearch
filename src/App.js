@@ -12,6 +12,7 @@ class App extends React.Component {
       input: '',
       pokemonList: [],
       loading: true,
+      page: 0,
     }
     this.handleChange = this.handleChange.bind(this);
     this.renderList = this.renderList.bind(this);
@@ -26,12 +27,15 @@ class App extends React.Component {
 
   handlePage(page) {
     this.fetchApi(fetchPokemonList, page);
+    this.setState({ page });
   }
 
   handleSearch() {
     const { input } = this.state;
-    this.setState({ input: '' });
-    this.fetchApi(fetchPokemonName, input);
+    if (input !== '') {
+      this.fetchApi(fetchPokemonName, input);
+      this.setState({ input: '' });
+    };
   }
 
   fetchApi(callback, page) {
@@ -56,11 +60,12 @@ class App extends React.Component {
   }
 
   renderList() {
-    const { state: { input, select, pokemonList } } = this;
+    const { state: { input, select, pokemonList, page }, handlePage } = this;
 
     return (
       <main className="App">
         <PokemonList pokemonList={ pokemonList } filters={{ search: input, category: select }}/>
+        <Footer handlePage={ handlePage } currentPage={ page } />
       </main> 
     );
   }
@@ -70,7 +75,6 @@ class App extends React.Component {
       renderList,
       handleChange,
       handleSearch,
-      handlePage,
     } = this;
 
     const { loading, input } = this.state;
@@ -83,7 +87,6 @@ class App extends React.Component {
           ? renderLoading()
           : renderList()
         }
-        <Footer handlePage={ handlePage } />
       </main>
     );
   }
